@@ -40,7 +40,6 @@ public class Empresa {
     public List<Sucursal> getListaSucursales() {
         return listaSucursales;
     }
-
     public void setListaSucursales(List<Sucursal> listaSucursales) {
         this.listaSucursales = listaSucursales;
     }
