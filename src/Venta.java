@@ -84,10 +84,12 @@ public class Venta {
         }
         return acumuladorTotal;
     }
-}
 
+    //Metodo para agregar detalle de venta
+    public void agregarDetalle(DetalleVenta detalleVenta) {
+        this.listaDetalleVentas.add(detalleVenta);
+    }
 
-    //
+    //Metodo para confirmar venta
 
-    //Metodo confirmar venta
 }
