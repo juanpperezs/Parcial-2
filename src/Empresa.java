@@ -107,4 +107,18 @@ public class Empresa {
         }
         return prendaMasVendida;
     }
+    //Metodo para buscar sucursales (codigo de scursal encontrado o no encontrado)
+    public Sucursal buscarSucursalPorCodigo(String codigoBuscado) {
+        boolean existe = false;
+        Sucursal sucursalEncontrada = null;
+
+        for (Sucursal sucursal : listaSucursales) {
+            if (sucursal.getCodigoUnico().equalsIgnoreCase(codigoBuscado)) {
+                existe = true;
+                sucursalEncontrada = sucursal;
+            }
+        }
+
+        return sucursalEncontrada;
+    }
 }
