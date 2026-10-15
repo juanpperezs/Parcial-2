@@ -79,9 +79,9 @@ public class Venta {
     public double calcularValorTotal() {
         double acumuladorTotal = 0.0;
         for (DetalleVenta detalle : this.listaDetalleVentas) {
-
-            acumuladorTotal += detalle.getPrecioUnitarioFinal();
+            acumuladorTotal += detalle.getSubtotal();
         }
+        this.valorTotal= (int) acumuladorTotal;
         return acumuladorTotal;
     }
 

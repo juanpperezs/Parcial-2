@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Empresa {
@@ -15,7 +16,7 @@ public class Empresa {
         if (listaSucursales != null){
             this.listaSucursales = listaSucursales;
         } else  {
-            this.listaSucursales = null;
+            this.listaSucursales = new ArrayList<>();
         }
     }
 

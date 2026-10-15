@@ -17,7 +17,6 @@ public class DetalleVenta {
     public int getCantidadComprada() {
         return cantidadComprada;
     }
-
     public void setCantidadComprada(int cantidadComprada) {
         this.cantidadComprada = cantidadComprada;
     }
@@ -25,7 +24,6 @@ public class DetalleVenta {
     public int getPrecioUnitarioFinal() {
         return precioUnitarioFinal;
     }
-
     public void setPrecioUnitarioFinal(int precioUnitarioFinal) {
         this.precioUnitarioFinal = precioUnitarioFinal;
     }
@@ -33,7 +31,6 @@ public class DetalleVenta {
     public int getSubtotal() {
         return subtotal;
     }
-
     public void setSubtotal(int subtotal) {
         this.subtotal = subtotal;
     }
@@ -41,7 +38,6 @@ public class DetalleVenta {
     public Inventario getInventario() {
         return inventario;
     }
-
     public void setInventario(Inventario inventario) {
         this.inventario = inventario;
     }
@@ -49,17 +45,17 @@ public class DetalleVenta {
     public Venta getVenta() {
         return venta;
     }
-
     public void setVenta(Venta venta) {
         this.venta = venta;
     }
 
+    //Método calcular precio unitario final
     public int calcularPrecioUnitarioFinal(Cliente cliente) {
-
-        int precioBase = this.inventario.getPrenda().getPrecioBasePrenda();
+        double precioConRecargo = this.inventario.getPrenda().calcularPrecioRecargo();
         double descuento = cliente.getCategoriaCliente().getDescuento();
-        int precioFinal = (int) (precioBase * (1 - descuento));
+        int precioFinal = (int) (precioConRecargo * (1 - descuento));
         this.precioUnitarioFinal = precioFinal;
+        this.subtotal = precioFinal*cantidadComprada;
         return precioFinal;
     }
 }
