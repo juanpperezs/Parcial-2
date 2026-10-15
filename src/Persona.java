@@ -10,6 +10,8 @@ public abstract class Persona {
         this.correoElectronico = correoElectronico;
         this.numeroTelefono = numeroTelefono;
     }
+    public Persona(){
+    }
 
     public String getDocumentoIdentidad() {
         return documentoIdentidad;
