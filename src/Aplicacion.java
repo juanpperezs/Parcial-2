@@ -27,9 +27,6 @@ public class Aplicacion {
         //Inventario
         Inventario inventario1= new Inventario(sucursalArmenia, camisa, Talla.M, "Blanco", 99, null);
 
-        //Vendedores
-        Vendedor Camilo= new Vendedor("1001", "Camilo Pulgarin Machuca", "camilin123@gmail.com", "31301", "V001", "06/Octubre/2020", 1500000, sucursalArmenia, null);
-        Vendedor Cristina= new Vendedor("1002", "Cristina Pulido Juarez", "Cristi1602@gmail.com", "31302", "1002", "10/Febrero/2021", 1500000, sucursalArmenia, null);
 
         int opcion;
 
