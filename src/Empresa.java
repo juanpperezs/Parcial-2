@@ -12,6 +12,7 @@ public class Empresa {
         this.direccionPrincipal = direccionPrincipal;
         this.listaSucursales = listaSucursales;
     }
+    //metodo para verificar sucursales
     public boolean verificarSucursal(String codigoUnicoSucursal) {
         boolean existe = false;
         for (Sucursal sucursal : listaSucursales) {
@@ -23,6 +24,7 @@ public class Empresa {
         return existe;
     }
 
+    //metodo para agregar sucursales
     public boolean agregarSucursal(Sucursal sucursal) {
         boolean agregado = false;
         boolean existe = verificarSucursal(sucursal.getCodigoUnico());
@@ -33,6 +35,7 @@ public class Empresa {
         return agregado;
     }
 
+    //metodo para obtener la prenda mas vendida
     public Prenda obtenerPrendaMasVendida() {
         if (listaSucursales == null || listaSucursales.isEmpty()) {
             return null;

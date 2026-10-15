@@ -23,6 +23,7 @@ public class Vendedor extends Persona {
             this.historialVentas = historialVentas;
         }
     }
+    //metodo para verificar ventas
     public boolean verificarVenta(String codigoVenta) {
         boolean existe = false;
         for (Venta venta : historialVentas) {
@@ -33,7 +34,7 @@ public class Vendedor extends Persona {
         }
         return existe;
     }
-
+    //metodo para registrar ventas
     public boolean registrarVenta(Venta venta) {
         boolean agregado = false;
         boolean existe = verificarVenta(venta.getCodigoUnicoVenta());
