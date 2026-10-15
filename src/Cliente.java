@@ -16,27 +16,6 @@ public class Cliente extends Persona{
         this.categoriaCliente = categoriaCliente;
         this.listaVentas = listaVentas;
     }
-    //metodo para verificar compras
-    public boolean verificarCompra(String codigoVenta) {
-        boolean existe = false;
-        for (Venta venta : listaVentas) {
-            if (venta.getCodigoUnicoVenta().equals(codigoVenta)) {
-                existe = true;
-                break;
-            }
-        }
-        return existe;
-    }
-    //metodo para agregar compras
-    public boolean agregarCompra(Venta venta) {
-        boolean agregado = false;
-        boolean existe = verificarCompra(venta.getCodigoUnicoVenta());
-        if (!existe) {
-            listaVentas.add(venta);
-            agregado = true;
-        }
-        return agregado;
-    }
 
     public String getCodigoAfiliacion() {
         return codigoAfiliacion;
@@ -59,4 +38,25 @@ public class Cliente extends Persona{
         this.listaVentas = listaVentas;
     }
 
+    //metodo para verificar compras
+    public boolean verificarCompra(String codigoVenta) {
+        boolean existe = false;
+        for (Venta venta : listaVentas) {
+            if (venta.getCodigoUnicoVenta().equals(codigoVenta)) {
+                existe = true;
+                break;
+            }
+        }
+        return existe;
+    }
+    //metodo para agregar compras
+    public boolean agregarCompra(Venta venta) {
+        boolean agregado = false;
+        boolean existe = verificarCompra(venta.getCodigoUnicoVenta());
+        if (!existe) {
+            listaVentas.add(venta);
+            agregado = true;
+        }
+        return agregado;
+    }
 }

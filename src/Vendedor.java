@@ -23,27 +23,6 @@ public class Vendedor extends Persona {
             this.historialVentas = historialVentas;
         }
     }
-    //metodo para verificar ventas
-    public boolean verificarVenta(String codigoVenta) {
-        boolean existe = false;
-        for (Venta venta : historialVentas) {
-            if (venta.getCodigoUnicoVenta().equals(codigoVenta)) {
-                existe = true;
-                break;
-            }
-        }
-        return existe;
-    }
-    //metodo para registrar ventas
-    public boolean registrarVenta(Venta venta) {
-        boolean agregado = false;
-        boolean existe = verificarVenta(venta.getCodigoUnicoVenta());
-        if (existe == false) {
-            historialVentas.add(venta);
-            agregado = true;
-        }
-        return agregado;
-    }
 
     public String getCodigoVendedor() {
         return codigoVendedor;
@@ -82,6 +61,28 @@ public class Vendedor extends Persona {
     }
     public void setHistorialVentas(List<Venta> historialVentas) {
         this.historialVentas = historialVentas;
+    }
+
+    //metodo para verificar ventas
+    public boolean verificarVenta(String codigoVenta) {
+        boolean existe = false;
+        for (Venta venta : historialVentas) {
+            if (venta.getCodigoUnicoVenta().equals(codigoVenta)) {
+                existe = true;
+                break;
+            }
+        }
+        return existe;
+    }
+    //metodo para registrar ventas
+    public boolean registrarVenta(Venta venta) {
+        boolean agregado = false;
+        boolean existe = verificarVenta(venta.getCodigoUnicoVenta());
+        if (existe == false) {
+            historialVentas.add(venta);
+            agregado = true;
+        }
+        return agregado;
     }
 
     @Override
