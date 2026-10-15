@@ -6,7 +6,12 @@ public class Aplicacion {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        //Empresa ModaStyle
+        Empresa empresa= new Empresa("ModaStyle", "100000", "Carrera 17 #19-31, Armenia, Quindío", null);
 
+        //Sucursales
+        Sucursal sucursal1= new Sucursal("1021", "ModaStyle Armenia", "Av. Bolívar #19 Norte-46, Portal del Quindío", "Armenia, Quindío");
+        Sucursal sucursal2= new Sucursal("1022", "ModaStyle Cali", "Calle 38N # 6N – 45, Centro Comercial Chipichape", "Cali, Valle del Cauca");
 
         int opcion;
 
