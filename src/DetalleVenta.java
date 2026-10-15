@@ -53,10 +53,11 @@ public class DetalleVenta {
     public void setVenta(Venta venta) {
         this.venta = venta;
     }
-}
-
-    //Metodo para calcular precio unitario
-    public double calcularValorUnitario(Prenda prenda) {
-        double precioBase = this.Prenda.getPrecioBasePrenda();
+    public int calcularPrecioUnitarioFinal(Cliente cliente) {
+        int precioBase = this.inventario.getPrenda().getPrecioBasePrenda();
+        double descuento = cliente.getCategoriaCliente().getDescuento();
+        int precioFinal = (int) (precioBase * (1 - descuento));
+        this.precioUnitarioFinal = precioFinal;
+        return precioFinal;
     }
-  }
+}

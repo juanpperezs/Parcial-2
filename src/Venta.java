@@ -74,5 +74,4 @@ public class Venta {
     public void setListaDetalleVentas(List<DetalleVenta> listaDetalleVentas) {
         this.listaDetalleVentas = listaDetalleVentas;
     }
-
 }
