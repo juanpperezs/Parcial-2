@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Aplicacion {
     public static void main(String[] args) {
@@ -48,9 +50,49 @@ public class Aplicacion {
                     break;
 
                 case 5:
-
+                    System.out.println("--- REGISTRAR VENTA ---");
+                    System.out.print("Ingrese el código único de la venta: ");
+                    String codigoVenta = scanner.next();
+                    System.out.print("Ingrese la fecha de realización (ej. DD/MM/AAAA): ");
+                    String fechaActual = scanner.next();
+                    System.out.print("Ingrese el ID o código de la sucursal: ");
+                    Sucursal sucursalEncontrada = null; // Reemplaza esto con la búsqueda real en tu lista de sucursales
+                    System.out.print("Ingrese el documento del vendedor: ");
+                    Vendedor vendedorEncontrado = null; // Reemplaza esto con la búsqueda real en tu lista de vendedores
+                    System.out.print("Ingrese el documento del cliente: ");
+                    Cliente clienteEncontrado = null; // Reemplaza esto con la búsqueda real en tu lista de clientes
+                    Venta nuevaVenta = new Venta(codigoVenta, fechaActual, sucursalEncontrada, vendedorEncontrado, clienteEncontrado);
+                    boolean stockSuficiente = true;
+                    List<DetalleVenta> detallesTemporal = new ArrayList<>();
+                    String respuesta;
+                    do {
+                        System.out.print("Ingrese el código de la prenda en inventario: ");
+                        Inventario inventarioSeleccionado = null; // Reemplaza esto con la búsqueda real del inventario
+                        System.out.print("Ingrese la cantidad deseada: ");
+                        int cantidadDeseada = scanner.nextInt();
+                        if (inventarioSeleccionado != null && inventarioSeleccionado.verificarDisponibilidad(cantidadDeseada)) {
+                            DetalleVenta detalle = new DetalleVenta(inventarioSeleccionado, cantidadDeseada);
+                            detallesTemporal.add(detalle);
+                            nuevaVenta.agregarDetalle(detalle);
+                            System.out.println("¡Prenda agregada a la venta con éxito!");
+                        } else {
+                            System.out.println("¡Error: No hay suficiente stock o el inventario no existe!");
+                            stockSuficiente = false;
+                            break;
+                        }
+                        System.out.print("¿Desea agregar otra prenda? (s/n): ");
+                        respuesta = scanner.next();
+                    } while (respuesta.equalsIgnoreCase("s"));
+                    if (stockSuficiente && !detallesTemporal.isEmpty()) {
+                        for (DetalleVenta d : detallesTemporal) {
+                            d.getInventario().descontarStock(d.getCantidadComprada());
+                        }
+                        nuevaVenta.confirmarVenta();
+                        System.out.println("¡Venta registrada y stock descontado con éxito!");
+                    } else {
+                        System.out.println("La venta fue cancelada o no pudo ser procesada.");
+                    }
                     break;
-
                 case 6:
 
                     break;

@@ -54,7 +54,6 @@ public class Prenda {
     public void setCategoriaPrenda(CategoriaPrenda categoriaPrenda) {
         this.categoriaPrenda = categoriaPrenda;
     }
-
     //metodo para calcular el precio del recargo
         public double calcularPrecioRecargo() {
             double precioRecargo = this.precioBasePrenda + (this.precioBasePrenda * this.categoriaPrenda.getRecargo());
