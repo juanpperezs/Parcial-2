@@ -30,7 +30,6 @@ public class Aplicacion {
             System.out.println("10. Consultar las compras realizadas por un cliente.\n");
             System.out.println("11. Calcular los ingresos totales generados por una sucursal.\n");
             System.out.println("12. Identificar la referencia de prenda con mayor cantidad de unidades vendidas en toda la empresa.\n");
-
             System.out.println("0. Salir del menú");
             System.out.print("Selecciona una opcion: ");
 
@@ -134,13 +133,25 @@ public class Aplicacion {
                     }
                     break;
                 case 8:
-
+                    System.out.println("--- REPORTE DE INVENTARIO AGOTADO ---");
+                    boolean hayAgotados = false;
+                    for (Sucursal sucursalActual : empresa.getListaSucursales()) {
+                        for (Inventario inv : sucursalActual.getListaInventarios()) {
+                            if (inv.getCantidadDisponibleInventario() == 0) {
+                                System.out.println("Sucursal: " + sucursalActual.getCiudad() +
+                                        " | Prenda: " + inv.getPrenda().getNombrePrenda() +
+                                        " | Color: " + inv.getColorInventario());
+                                hayAgotados = true;
+                            }
+                        }
+                    }
+                    if (!hayAgotados) {
+                        System.out.println("¡No hay inventario agotado registrado en las sucursales!");
+                    }
                     break;
-
                 case 9:
                     System.out.println("\n--- CONSULTAR VENTAS POR VENDEDOR ---");
                     break;
-
                 case 10:
 
                     break;
