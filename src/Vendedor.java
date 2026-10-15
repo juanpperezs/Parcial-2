@@ -8,15 +8,20 @@ public class Vendedor extends Persona {
     private String fechaContratacionVendedor;
     private int salarioBasicoVendedor;
     private Sucursal sucursal;
-    private List<DetalleVenta> listaDetalleVentas;
     private List<Venta> historialVentas;
 
-    public Vendedor(String codigoVendedor, String fechaContratacionVendedor, int salarioBasicoVendedor, String sucursalVendedor, String historialVentasVendedor) {
+    public Vendedor(String documentoIdentidad, String nombreCompleto, String correoElectronico, String numeroTelefono, String codigoVendedor, String fechaContratacionVendedor, int salarioBasicoVendedor, Sucursal sucursal, List<Venta> historialVentas) {
+        super(documentoIdentidad, nombreCompleto, correoElectronico, numeroTelefono);
         this.codigoVendedor = codigoVendedor;
         this.fechaContratacionVendedor = fechaContratacionVendedor;
         this.salarioBasicoVendedor = salarioBasicoVendedor;
         this.sucursal = sucursal;
-        this.listaDetalleVentas = new ArrayList<DetalleVenta>();
+
+        if (historialVentas == null) {
+            this.historialVentas = new ArrayList<>();
+        } else {
+            this.historialVentas = historialVentas;
+        }
     }
     public boolean verificarVenta(String codigoVenta) {
         boolean existe = false;
@@ -71,12 +76,11 @@ public class Vendedor extends Persona {
         this.sucursal = sucursal;
     }
 
-    public List<DetalleVenta> getListaDetalleVentas() {
-        return listaDetalleVentas;
+    public List<Venta> getHistorialVentas() {
+        return historialVentas;
     }
-
-    public void setListaDetalleVentas(List<DetalleVenta> listaDetalleVentas) {
-        this.listaDetalleVentas = listaDetalleVentas;
+    public void setHistorialVentas(List<Venta> historialVentas) {
+        this.historialVentas = historialVentas;
     }
 
     @Override
@@ -86,7 +90,7 @@ public class Vendedor extends Persona {
                 ", fechaContratacionVendedor='" + fechaContratacionVendedor + '\'' +
                 ", salarioBasicoVendedor=" + salarioBasicoVendedor +
                 ", sucursal=" + sucursal +
-                ", listaDetalleVentas=" + listaDetalleVentas +
+                ", historialVentas=" + historialVentas +
                 '}';
     }
 }
