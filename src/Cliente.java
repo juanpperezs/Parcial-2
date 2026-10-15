@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente extends Persona{
@@ -14,7 +15,13 @@ public class Cliente extends Persona{
         super(documentoIdentidad, nombreCompleto, correoElectronico, numeroTelefono);
         this.codigoAfiliacion = codigoAfiliacion;
         this.categoriaCliente = categoriaCliente;
-        this.listaVentas = listaVentas;
+
+        //Condición que identifica si existe lista de ventas, si no la existe, la crea
+        if (listaVentas != null) {
+            this.listaVentas = listaVentas;
+        } else  {
+            this.listaVentas = new ArrayList<>();
+        }
     }
 
     public String getCodigoAfiliacion() {

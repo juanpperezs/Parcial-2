@@ -10,7 +10,13 @@ public class Empresa {
         this.nombreComercial = nombreComercial;
         this.nit = nit;
         this.direccionPrincipal = direccionPrincipal;
-        this.listaSucursales = listaSucursales;
+
+        //Condición que identifica si existe lista de ventas, si no la existe, la crea
+        if (listaSucursales != null){
+            this.listaSucursales = listaSucursales;
+        } else  {
+            this.listaSucursales = null;
+        }
     }
 
     public String getNombreComercial() {

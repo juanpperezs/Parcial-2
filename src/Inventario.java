@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Inventario {
@@ -15,7 +16,13 @@ public class Inventario {
         this.talla = talla;
         this.colorInventario = colorInventario;
         this.cantidadDisponibleInventario = cantidadDisponibleInventario;
-        this.detallesVenta = detallesVenta;
+
+        //Condición que identifica si existe lista de ventas, si no la existe, la crea
+        if (detallesVenta != null) {
+            this.detallesVenta = detallesVenta;
+        } else  {
+            this.detallesVenta = new ArrayList<>();
+        }
     }
 
     public Sucursal getSucursal() {
