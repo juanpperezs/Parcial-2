@@ -57,4 +57,13 @@ public class Sucursal {
 
     public List<Venta> getListaVentas() { return listaVentas; }
     public void setListaVentas(List<Venta> listaVentas) { this.listaVentas = listaVentas; }
+
+    public boolean siExistePrendaEnSucursal(String codigoPrendaBuscada) {
+        for (Inventario inventarioActual : listaInventarios) {
+            if (inventarioActual.getPrenda().getCodigoUnicoPrenda().equalsIgnoreCase(codigoPrendaBuscada)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
