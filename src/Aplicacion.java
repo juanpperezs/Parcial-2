@@ -10,8 +10,26 @@ public class Aplicacion {
         Empresa empresa= new Empresa("ModaStyle", "100000", "Carrera 17 #19-31, Armenia, Quindío", null);
 
         //Sucursales
-        Sucursal sucursal1= new Sucursal("1021", "ModaStyle Armenia", "Av. Bolívar #19 Norte-46, Portal del Quindío", "Armenia, Quindío");
-        Sucursal sucursal2= new Sucursal("1022", "ModaStyle Cali", "Calle 38N # 6N – 45, Centro Comercial Chipichape", "Cali, Valle del Cauca");
+        Sucursal sucursalArmenia= new Sucursal("S01", "ModaStyle Armenia", "Avenida Bolívar #19 Norte-46, Portal del Quindío", "Armenia, Quindío");
+        Sucursal sucursalCali = new Sucursal("S02", "ModaStyle Cali", "Calle 38N # 6N – 45, Centro Comercial Chipichape", "Cali, Valle del Cauca");
+        Sucursal sucursalCartagena= new Sucursal("S03", "ModaStyle Cartagena", "Carrera. 11 #39-21, San Diego", "Cartagena de indias, Bolívar");
+        empresa.agregarSucursal(sucursalArmenia);
+        empresa.agregarSucursal(sucursalCali);
+        empresa.agregarSucursal(sucursalCartagena);
+
+        //Prendas
+        Prenda camisa= new Prenda("P1", "Camisa Polo", "Polo Club", 135000, CategoriaPrenda.CAMISETA);
+        Prenda pantalon= new Prenda("P2", "Pantalón carpintero", "KOAJ", 90000, CategoriaPrenda.PANTALON);
+        Prenda vestido= new Prenda("P3", "Vestido de grado", "La lapita", 320000, CategoriaPrenda.VESTIDO);
+        Prenda chaqueta= new Prenda("P4", "Chaqueta impermeable", "Decathlon", 350000, CategoriaPrenda.CHAQUETA);
+        Prenda calzado= new Prenda("P5", "Guayos Mercurial Vapor 16", "Nike", 260000, CategoriaPrenda.CALZADO);
+
+        //Inventario
+        Inventario inventario1= new Inventario(sucursalArmenia, camisa, Talla.M, "Blanco", 99, null);
+
+        //Vendedores
+        Vendedor Camilo= new Vendedor("1001", "Camilo Pulgarin Machuca", "camilin123@gmail.com", "31301", "V001", "06/Octubre/2020", 1500000, sucursalArmenia, null);
+        Vendedor Cristina= new Vendedor("1002", "Cristina Pulido Juarez", "Cristi1602@gmail.com", "31302", "1002", "10/Febrero/2021", 1500000, sucursalArmenia, null);
 
         int opcion;
 
@@ -45,7 +63,7 @@ public class Aplicacion {
                     System.out.print("Ingrese el documento de identidad: ");
                     String documento = scanner.nextLine();
 
-                    if (Cliente.existeCliente(documento)) {
+                    /*if (Cliente.existeCliente(documento)) {
                         System.out.println("-> Error: Ya existe un cliente registrado con la cédula " + documento);
                     } else {
                         System.out.print("Ingrese el nombre completo del cliente: ");
@@ -53,8 +71,7 @@ public class Aplicacion {
 
                         Cliente.registrarCliente(new Cliente(documento, nombre));
                         System.out.println("-> Cliente registrado exitosamente.");
-                    }
-                    break;
+                    }*/
                     break;
 
                 case 3:
