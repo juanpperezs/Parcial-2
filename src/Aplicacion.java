@@ -94,13 +94,40 @@ public class Aplicacion {
                     }
                     break;
                 case 6:
-
+                    System.out.println("--- CALCULAR PRECIO UNITARIO FINAL ---");
+                    System.out.print("Ingrese el código de la venta a procesar: ");
+                    String codigoVentaBuscado = scanner.next();
+                    Venta ventaEncontrada = null;
+                    if (ventaEncontrada != null && ventaEncontrada.getListaDetalleVentas() != null) {
+                        Cliente clienteActual = ventaEncontrada.getCliente();
+                        System.out.println("Cliente: " + clienteActual.getNombreCompleto() + " | Categoría: " + clienteActual.getCategoriaCliente());
+                        for (DetalleVenta detalle : ventaEncontrada.getListaDetalleVentas()) {
+                            int precioFinal = detalle.calcularPrecioUnitarioFinal(clienteActual);
+                            System.out.println("Prenda: " + detalle.getInventario().getPrenda().getNombrePrenda() +
+                                    " | Precio Unitario Final: $" + precioFinal);
+                        }
+                    } else {
+                        System.out.println("¡Error: No se encontró la venta especificada!");
+                    }
                     break;
-
                 case 7:
-
+                    System.out.println("--- CALCULAR VALOR TOTAL DE LA VENTA ---");
+                    System.out.print("Ingrese el código único de la venta a consultar: ");
+                    String codigoVentaTotalBuscado = scanner.next();
+                    Venta ventaParaTotal = null;
+                    if (ventaParaTotal != null) {
+                        double valorTotalVenta = 0;
+                        if (ventaParaTotal.getListaDetalleVentas() != null) {
+                            for (DetalleVenta detalleActual : ventaParaTotal.getListaDetalleVentas()) {
+                                double subtotalDetalle = detalleActual.getSubtotal();
+                                valorTotalVenta += subtotalDetalle;
+                            }
+                        }
+                        System.out.println("El valor total de la venta (" + ventaParaTotal.getCodigoUnicoVenta() + ") es: $" + valorTotalVenta);
+                    } else {
+                        System.out.println("¡Error: No se encontró la venta con el código ingresado!");
+                    }
                     break;
-
                 case 8:
 
                     break;
