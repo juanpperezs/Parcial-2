@@ -56,22 +56,22 @@ public class Aplicacion {
                     System.out.print("Ingrese la fecha de realización (ej. DD/MM/AAAA): ");
                     String fechaActual = scanner.next();
                     System.out.print("Ingrese el ID o código de la sucursal: ");
-                    Sucursal sucursalEncontrada = null; // Reemplaza esto con la búsqueda real en tu lista de sucursales
+                    Sucursal sucursalEncontrada = null;
                     System.out.print("Ingrese el documento del vendedor: ");
-                    Vendedor vendedorEncontrado = null; // Reemplaza esto con la búsqueda real en tu lista de vendedores
+                    Vendedor vendedorEncontrado = null;
                     System.out.print("Ingrese el documento del cliente: ");
-                    Cliente clienteEncontrado = null; // Reemplaza esto con la búsqueda real en tu lista de clientes
-                    Venta nuevaVenta = new Venta(codigoVenta, fechaActual, sucursalEncontrada, vendedorEncontrado, clienteEncontrado);
+                    Cliente clienteEncontrado = null;
+                    Venta nuevaVenta = new Venta(codigoVenta, fechaActual, 0, vendedorEncontrado, sucursalEncontrada, clienteEncontrado);
                     boolean stockSuficiente = true;
                     List<DetalleVenta> detallesTemporal = new ArrayList<>();
                     String respuesta;
                     do {
                         System.out.print("Ingrese el código de la prenda en inventario: ");
-                        Inventario inventarioSeleccionado = null; // Reemplaza esto con la búsqueda real del inventario
+                        Inventario inventarioSeleccionado = null;
                         System.out.print("Ingrese la cantidad deseada: ");
                         int cantidadDeseada = scanner.nextInt();
                         if (inventarioSeleccionado != null && inventarioSeleccionado.verificarDisponibilidad(cantidadDeseada)) {
-                            DetalleVenta detalle = new DetalleVenta(inventarioSeleccionado, cantidadDeseada);
+                            DetalleVenta detalle = new DetalleVenta(cantidadDeseada, 0, 0, inventarioSeleccionado, nuevaVenta);
                             detallesTemporal.add(detalle);
                             nuevaVenta.agregarDetalle(detalle);
                             System.out.println("¡Prenda agregada a la venta con éxito!");
