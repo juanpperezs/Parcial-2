@@ -91,5 +91,27 @@ public class Venta {
     }
 
     //Metodo para confirmar venta
+    public boolean confirmarVenta() {
 
+        boolean esVentaValida = true;
+
+        // Verifica que lista de detalles no esté vacía
+        if (this.listaDetalleVentas == null || this.listaDetalleVentas.isEmpty() || this.cliente == null || this.vendedor == null) {
+
+            esVentaValida = false;
+        }
+
+        // Verifica el stock de cada ítem
+        if (esVentaValida) {
+            for (DetalleVenta detalle : this.listaDetalleVentas) {
+
+                if (detalle.getInventario() == null || !detalle.getInventario().verificarDisponibilidad(detalle.getCantidadComprada())) {
+
+                    esVentaValida = false;
+                    break;
+                }
+            }
+        }
+        return esVentaValida;
+    }
 }
