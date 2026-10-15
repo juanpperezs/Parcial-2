@@ -38,5 +38,5 @@ public class Cliente extends Persona{
         this.listaVentas = listaVentas;
     }
 
-    //Método para verificar
+    //Método para verificar 
 }
