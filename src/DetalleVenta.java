@@ -53,7 +53,9 @@ public class DetalleVenta {
     public void setVenta(Venta venta) {
         this.venta = venta;
     }
+
     public int calcularPrecioUnitarioFinal(Cliente cliente) {
+
         int precioBase = this.inventario.getPrenda().getPrecioBasePrenda();
         double descuento = cliente.getCategoriaCliente().getDescuento();
         int precioFinal = (int) (precioBase * (1 - descuento));
