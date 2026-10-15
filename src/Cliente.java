@@ -67,17 +67,4 @@ public class Cliente extends Persona{
         }
         return agregado;
     }
-
-    //Metodo para verificar sin un cliente existe
-    public boolean existeCliente(String documentoBuscado) {
-        for (Cliente clienteActual : listaClientes) {
-            if (clienteActual.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    //Metodo para registrar un cliente
-    public boolean
 }

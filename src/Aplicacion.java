@@ -53,7 +53,42 @@ public class Aplicacion {
 
             switch (opcion){
                 case 1:
+                    System.out.print("---REGISTRAR PRENDAS---"+ "\n");
 
+                    System.out.print("Ingrese el código de la sucursal: ");
+                    String codSucursal1 = scanner.nextLine();
+
+                    Sucursal sucursalActual = empresa.buscarSucursalPorCodigo(codSucursal1);
+
+                    if (sucursalActual == null) {
+                        System.out.println("---Error: La sucursal con el código " + codSucursal1 + " no existe.");
+                    } else {
+                        // 4. Solicitar los datos para la nueva prenda
+                        System.out.print("Ingrese el código único de la prenda: ");
+                        String codigoPrenda = scanner.nextLine();
+
+                        // Verificar si la prenda ya existe en esta sucursal
+                        boolean existePrenda = sucursalActual.verificarPrenda(codigoPrenda);
+                        if (existePrenda) {
+                            System.out.println("---Error: La prenda ya existe en la sucursal " + sucursalActual.getNombre() + ".");
+                        } else {
+                            System.out.print("Ingrese el nombre de la prenda: ");
+                            String nombre = scanner.nextLine();
+
+                            System.out.print("Ingrese la marca: ");
+                            String marca = scanner.nextLine();
+
+                            System.out.print("Ingrese el precio base: ");
+                            double precioBase = scanner.nextDouble();
+                            scanner.nextLine(); // Limpiar el buffer del scanner
+
+                            // Crear la prenda y agregarla a la sucursal seleccionada
+                            Prenda nuevaPrenda = new Prenda(codigoPrenda, nombre, marca, calzado.getPrecioBasePrenda());
+                            sucursalActual.agregarPrenda(nuevaPrenda);
+
+                            System.out.println("-> Prenda agregada exitosamente a la sucursal: " + sucursalActual.getNombre());
+                        }
+                    }
                     break;
 
                 case 2:
@@ -72,7 +107,40 @@ public class Aplicacion {
                     break;
 
                 case 3:
+                    System.out.print("---REGISTRAR EXISTENCIAS DE PRENDAS---"+"\n");
 
+                    System.out.print("Ingrese el código de la prenda: ");
+                    String codigoIngresado = scanner.nextLine();
+
+                    sucursalActual= empresa.buscarSucursalPorCodigo(codigoIngresado);
+
+                    Prenda prendaBase = sucursalActual.buscarPrendaPorCodigo(codigoIngresado);
+
+                    if (prendaBase == null) {
+                        System.out.println("-> Error: El código no existe en el catálogo. Regístrela en la Opción 1.");
+                    } else {
+                        System.out.print("Ingrese la talla: ");
+                        String talla = scanner.nextLine();
+
+                        System.out.print("Ingrese el color: ");
+                        String color = scanner.nextLine();
+
+                        System.out.print("Ingrese la cantidad a registrar: ");
+                        int cantidad = scanner.nextInt();
+                        scanner.nextLine();
+
+                        boolean existeCombinacion = sucursalActual.verificarInventarioCombinacion(codigoIngresado, talla, color);
+
+                        if (existeCombinacion) {
+                            Inventario invExistente = sucursalActual.buscarInventarioPorCombinacion(codigoIngresado, talla, color);
+                            invExistente.setCantidadDisponibleInventario(invExistente.getCantidadDisponibleInventario() + cantidad);
+                            System.out.println("--- Se sumaron las unidades al inventario existente.---");
+                        } else { //talla da error al no pertenecer a String
+                            Inventario nuevoInventario = new Inventario(prendaBase, talla, color, cantidad);
+                            sucursalActual.getListaInventarios().add(nuevoInventario);
+                            System.out.println("--- Nueva combinación registrada con éxito.---");
+                        }
+                    }
                     break;
 
                 case 4:

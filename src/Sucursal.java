@@ -58,32 +58,120 @@ public class Sucursal {
     public List<Venta> getListaVentas() { return listaVentas; }
     public void setListaVentas(List<Venta> listaVentas) { this.listaVentas = listaVentas; }
 
+
     //Metodo  para verificar si existe prenda
-    public boolean existePrendaEnSucursal(String codigoPrendaBuscada) {
-        for (Inventario inventarioActual : listaInventarios) {
-            if (inventarioActual.getPrenda().getCodigoUnicoPrenda().equalsIgnoreCase(codigoPrendaBuscada)) {
-                return true;
+    public boolean verificarPrenda(String codigoBuscado) {
+    boolean existe = false;
+        for (Prenda prendaActual : listaPrendas) {
+            if (prendaActual.getCodigoUnicoPrenda().equalsIgnoreCase(codigoBuscado)) {
+                existe = true;
             }
         }
-        return false;
+        return existe;
     }
 
-    public Prenda buscarPrendaPorCodigo(String codigoBuscado) {
-        for (Prenda prenda : listaPrendas) {
-            if (prenda.getCodigoUnicoPrenda().equalsIgnoreCase(codigoBuscado)) {
-                return prenda;
-            }
+
+    //Metodo para agregar prenda
+    public boolean agregarPrenda(Prenda prenda) {
+    boolean agregado = false;
+    boolean existe = verificarPrenda(prenda.getCodigoUnicoPrenda());
+        if (!existe) {
+            listaPrendas.add(prenda);
+            agregado = true;
         }
-        return null;
+        return agregado;
     }
 
     //Metodo para verificar si existe vendedor
-    public boolean existeVendedor(String documentoBuscado) {
-        for (Vendedor vendedor : listaVendedores) {
-            if (vendedor.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
-                return true;
+    public boolean verificarVendedor(String documentoBuscado) {
+        boolean existe = false;
+        for (Vendedor vendedorActual : listaVendedores) {
+            if (vendedorActual.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
+                existe = true;
             }
         }
-        return false;
+        return existe;
     }
+
+    //Metodo para verificar si existe cliente
+    public boolean verificarCliente(String documentoBuscado) {
+        boolean existe = false;
+        for (Cliente clienteActual : listaClientes) {
+            if (clienteActual.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+    //Metodo para agregar cliente
+    public boolean agregarCliente(Cliente cliente) {
+    boolean agregado = false;
+    boolean existe = verificarCliente(cliente.getDocumentoIdentidad());
+        if (!existe) {
+        listaClientes.add(cliente);
+        agregado = true;
+    }
+    return agregado;
+}
+
+    //Metodo para agregar vendedor
+    public boolean agregarVendedor(Vendedor vendedor) {
+        boolean agregado = false;
+    boolean existe = verificarVendedor(vendedor.getDocumentoIdentidad());
+        if (!existe) {
+            listaVendedores.add(vendedor);
+            agregado = true;
+        }
+        return agregado;
+    }
+
+    //Metodo para verificar si existe codigo de prenda
+    public boolean verificarCodigoPrenda(String codigoBuscado) {
+    boolean existe = false;
+    for (Prenda prendaActual : listaPrendas) {
+        if (prendaActual.getCodigoUnicoPrenda().equalsIgnoreCase(codigoBuscado)) {
+            existe = true;
+        }
+    }
+    return existe;
+}
+
+    //Metodo para buscar prenda con código
+    public Prenda buscarPrendaPorCodigo(String codigoBuscado) {
+        Prenda prendaEncontrada = null;
+        for (Prenda prendaActual : listaPrendas) {
+            if (prendaActual.getCodigoUnicoPrenda().equalsIgnoreCase(codigoBuscado)) {
+                prendaEncontrada = prendaActual;
+            }
+        }
+        return prendaEncontrada;
+    }
+
+    //Metodo para verificar si la combinacio existe
+    public boolean verificarInventarioCombinacion(String codigo, String talla, String color) {
+        boolean existe = false;
+        for (Inventario inv : listaInventarios) {
+            if (inv.getPrenda().getCodigoUnicoPrenda().equalsIgnoreCase(codigo) && inv.getTalla().equalsIgnoreCase(talla) && inv.getColorInventario().equalsIgnoreCase(color)) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+    //Metodo para buscar la combinacion en inventario
+    public Inventario buscarInventarioPorCombinacion(String codigo, String talla, String color) {
+        Inventario inventarioEncontrado = null;
+        for (Inventario inv : listaInventarios) {
+            if (inv.getPrenda().getCodigoUnicoPrenda().equalsIgnoreCase(codigo) && inv.getTalla().equalsIgnoreCase(talla) && inv.getColorInventario().equalsIgnoreCase(color)) {
+                inventarioEncontrado = inv;
+            }
+        }
+        return inventarioEncontrado;
+    }
+    //Metodo
+
+
+
+
 }
