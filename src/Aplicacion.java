@@ -7,7 +7,7 @@ public class Aplicacion {
         Scanner scanner = new Scanner(System.in);
 
         //Empresa ModaStyle
-        Empresa empresa= new Empresa("ModaStyle", "100000", "Carrera 17 #19-31, Armenia, Quindío", null);
+        Empresa empresa= new Empresa("ModaStyle", "100000", "Carrera 17 #19-31, Armenia, Quindío", null, null);
 
         //Sucursales
         Sucursal sucursalArmenia= new Sucursal("S01", "ModaStyle Armenia", "Avenida Bolívar #19 Norte-46, Portal del Quindío", "Armenia, Quindío");
@@ -24,9 +24,65 @@ public class Aplicacion {
         Prenda chaqueta= new Prenda("P4", "Chaqueta impermeable", "Decathlon", 350000, CategoriaPrenda.CHAQUETA);
         Prenda calzado= new Prenda("P5", "Guayos Mercurial Vapor 16", "Nike", 260000, CategoriaPrenda.CALZADO);
 
-        //Inventario
-        Inventario inventario1= new Inventario(sucursalArmenia, camisa, Talla.M, "Blanco", 99, null);
+        //Inventario sucursal Armenia
+        Inventario inventarioArmenia1= new Inventario(sucursalArmenia, camisa, Talla.M, "Blanco", 99, null);
+        Inventario inventarioArmenia2 = new Inventario(sucursalArmenia, pantalon, Talla.S, "Blanco", 99, null);
+        Inventario inventarioArmenia3 = new Inventario(sucursalArmenia, vestido, Talla.XL, "Blanco", 99, null);
+        Inventario inventarioArmenia4 = new Inventario(sucursalArmenia, chaqueta, Talla.L, "Blanco", 99, null);
+        Inventario inventarioArmenia5 = new Inventario(sucursalArmenia, calzado, Talla.TALLA_37, "Blanco", 99, null);
+        sucursalArmenia.getListaInventarios().add(inventarioArmenia1);
+        sucursalArmenia.getListaInventarios().add(inventarioArmenia2);
+        sucursalArmenia.getListaInventarios().add(inventarioArmenia3);
+        sucursalArmenia.getListaInventarios().add(inventarioArmenia4);
+        sucursalArmenia.getListaInventarios().add(inventarioArmenia5);
 
+        //Inventario sucursal Cali
+        Inventario inventarioCali1 = new Inventario(sucursalCali, camisa, Talla.L, "Negro", 80, null);
+        Inventario inventarioCali2 = new Inventario(sucursalCali, pantalon, Talla.L, "Negro", 80, null);
+        Inventario inventarioCali3 = new Inventario(sucursalCali, vestido, Talla.M, "Negro", 80, null);
+        Inventario inventarioCali4 = new Inventario(sucursalCali, chaqueta, Talla.S, "Negro", 80, null);
+        Inventario inventarioCali5 = new Inventario(sucursalCali, calzado, Talla.TALLA_40, "Negro", 80, null);
+        sucursalCali.getListaInventarios().add(inventarioCali1);
+        sucursalCali.getListaInventarios().add(inventarioCali2);
+        sucursalCali.getListaInventarios().add(inventarioCali3);
+        sucursalCali.getListaInventarios().add(inventarioCali4);
+        sucursalCali.getListaInventarios().add(inventarioCali5);
+
+        //Inventario sucursal Cartagena
+        Inventario inventarioCartagena1 = new Inventario(sucursalCartagena, camisa, Talla.S, "Azul", 60, null);
+        Inventario inventarioCartagena2 = new Inventario(sucursalCartagena, pantalon, Talla.M, "Azul", 60, null);
+        Inventario inventarioCartagena3 = new Inventario(sucursalCartagena, vestido, Talla.L, "Azul", 60, null);
+        Inventario inventarioCartagena4 = new Inventario(sucursalCartagena, chaqueta, Talla.XL, "Azul", 60, null);
+        Inventario inventarioCartagena5 = new Inventario(sucursalCartagena, calzado, Talla.TALLA_38, "Azul", 60, null);
+        sucursalCartagena.getListaInventarios().add(inventarioCartagena1);
+        sucursalCartagena.getListaInventarios().add(inventarioCartagena2);
+        sucursalCartagena.getListaInventarios().add(inventarioCartagena3);
+        sucursalCartagena.getListaInventarios().add(inventarioCartagena4);
+        sucursalCartagena.getListaInventarios().add(inventarioCartagena5);
+
+        //Vendedores de las 3 sucursales
+        Vendedor Camilo= new Vendedor("1001", "Camilo Pulgarin Machuca", "camilin123@gmail.com", "31301", "V001", "06/Octubre/2020", 1500000, sucursalArmenia, null);
+        Vendedor Cristina= new Vendedor("1002", "Cristina Pulido Juarez", "Cristi1602@gmail.com", "31302", "V002", "10/Febrero/2021", 1500000, sucursalArmenia, null);
+        sucursalArmenia.getListaVendedores().add(Camilo);
+        sucursalArmenia.getListaVendedores().add(Cristina);
+
+        Vendedor Sergio= new Vendedor("1003", "Sergio Castañeda Benavidez", "Sergio10@gmail.com", "31303", "V003", "24/Agosto/2019",  1500000, sucursalCali, null);
+        Vendedor Valentina = new Vendedor("1004", "Valentina Gomez Restrepo", "ValenGomez20@gmail.com", "31304", "V004", "15/Marzo/2021", 1500000, sucursalCali, null);
+        sucursalCali.getListaVendedores().add(Sergio);
+        sucursalCali.getListaVendedores().add(Valentina);
+
+        Vendedor Mateo = new Vendedor("1005", "Mateo Rios Cardona", "MateoRios05@gmail.com", "31305", "V005", "02/Enero/2020", 1500000, sucursalCartagena, null);
+        Vendedor Juliana = new Vendedor("1006", "Juliana Marin Lopez", "JulianaMarin@gmail.com", "31306", "V006", "18/Julio/2022", 1500000, sucursalCartagena, null);
+        sucursalCartagena.getListaVendedores().add(Mateo);
+        sucursalCartagena.getListaVendedores().add(Juliana);
+
+        //Clientes
+        Cliente cliente1= new Cliente("2001", "Julio Encizo Perez", "Encizo43@gmail.com", "31401", "C001", CategoriaCliente.BRONCE, null);
+        Cliente cliente2 = new Cliente("2002", "Francisco Rodriguez Mendez", "FranciscoRM@gmail.com", "31402", "C002", CategoriaCliente.PLATA, null);
+        Cliente cliente3 = new Cliente("2003", "Victoria Suarez Lopez", "VictoriaGanadora@gmail.com", "31403", "C003", CategoriaCliente.ORO, null);
+        empresa.getListaClientes().add(cliente1);
+        empresa.getListaClientes().add(cliente2);
+        empresa.getListaClientes().add(cliente3);
 
         int opcion;
 

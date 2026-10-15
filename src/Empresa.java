@@ -6,8 +6,9 @@ public class Empresa {
     private String nit;
     private String direccionPrincipal;
     private List<Sucursal> listaSucursales;
+    private List<Cliente> listaClientes;
 
-    public Empresa(String nombreComercial, String nit, String direccionPrincipal, List<Sucursal> listaSucursales) {
+    public Empresa(String nombreComercial, String nit, String direccionPrincipal, List<Sucursal> listaSucursales, List<Cliente> listaClientes) {
         this.nombreComercial = nombreComercial;
         this.nit = nit;
         this.direccionPrincipal = direccionPrincipal;
@@ -17,6 +18,12 @@ public class Empresa {
             this.listaSucursales = listaSucursales;
         } else  {
             this.listaSucursales = new ArrayList<>();
+        }
+
+        if (listaClientes != null){
+            this.listaClientes = listaClientes;
+        } else   {
+            this.listaClientes = new ArrayList<>();
         }
     }
 
@@ -50,6 +57,13 @@ public class Empresa {
     }
     public void setListaSucursales(List<Sucursal> listaSucursales) {
         this.listaSucursales = listaSucursales;
+    }
+
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+    public void setListaClientes(List<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
     }
 
     //metodo para verificar sucursales
