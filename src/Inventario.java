@@ -65,16 +65,19 @@ public class Inventario {
     public void setDetallesVenta(List<DetalleVenta> detallesVenta) {
         this.detallesVenta = detallesVenta;
     }
+
     //metodo para verificar la disponibilidad
     public boolean verificarDisponibilidad(int cantidadSolicitada) {
         return this.cantidadDisponibleInventario >= cantidadSolicitada;
     }
+
     //metodo para descontar el stock
     public void descontarStock(int cantidadVendida) {
         if (verificarDisponibilidad(cantidadVendida)) {
             this.cantidadDisponibleInventario -= cantidadVendida;
         }
     }
+
     //metodo para identificar si una prenda esta agotada
     public boolean estaAgotado() {
         return this.cantidadDisponibleInventario <= 0;

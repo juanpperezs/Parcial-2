@@ -74,4 +74,20 @@ public class Venta {
     public void setListaDetalleVentas(List<DetalleVenta> listaDetalleVentas) {
         this.listaDetalleVentas = listaDetalleVentas;
     }
+
+    //Metodo para get valor total
+    public double calcularValorTotal() {
+        double acumuladorTotal = 0.0;
+        for (DetalleVenta detalle : this.listaDetalleVentas) {
+
+            acumuladorTotal += detalle.getPrecioUnitarioFinal();
+        }
+        return acumuladorTotal;
+    }
+}
+
+
+    //
+
+    //Metodo confirmar venta
 }
