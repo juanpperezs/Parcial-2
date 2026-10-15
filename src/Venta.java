@@ -13,7 +13,7 @@ public class Venta {
     private Sucursal sucursal;
     private Cliente cliente;
 
-    private List<Venta> listaVentas;
+    private List<DetalleVenta> listaDetalleVentas;
 
     public Venta(String codigoUnicoVenta, String fechaCRealizacionVenta, int valorTotal, Vendedor vendedor, Sucursal sucursal, Cliente cliente) {
         this.codigoUnicoVenta = codigoUnicoVenta;
@@ -23,13 +23,12 @@ public class Venta {
         this.sucursal = sucursal;
         this.cliente = cliente;
 
-        listaVentas= new ArrayList<>();
+        listaDetalleVentas = new ArrayList<>();
     }
 
     public String getCodigoUnicoVenta() {
         return codigoUnicoVenta;
     }
-
     public void setCodigoUnicoVenta(String codigoUnicoVenta) {
         this.codigoUnicoVenta = codigoUnicoVenta;
     }
@@ -37,7 +36,6 @@ public class Venta {
     public String getFechaCRealizacionVenta() {
         return fechaCRealizacionVenta;
     }
-
     public void setFechaCRealizacionVenta(String fechaCRealizacionVenta) {
         this.fechaCRealizacionVenta = fechaCRealizacionVenta;
     }
@@ -45,7 +43,6 @@ public class Venta {
     public int getValorTotal() {
         return valorTotal;
     }
-
     public void setValorTotal(int valorTotal) {
         this.valorTotal = valorTotal;
     }
@@ -53,7 +50,6 @@ public class Venta {
     public Vendedor getVendedor() {
         return vendedor;
     }
-
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }
@@ -61,7 +57,6 @@ public class Venta {
     public Sucursal getSucursal() {
         return sucursal;
     }
-
     public void setSucursal(Sucursal sucursal) {
         this.sucursal = sucursal;
     }
@@ -69,16 +64,15 @@ public class Venta {
     public Cliente getCliente() {
         return cliente;
     }
-
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public List<Venta> getListaVentas() {
-        return listaVentas;
+    public List<DetalleVenta> getListaDetalleVentas() {
+        return listaDetalleVentas;
+    }
+    public void setListaDetalleVentas(List<DetalleVenta> listaDetalleVentas) {
+        this.listaDetalleVentas = listaDetalleVentas;
     }
 
-    public void setListaVentas(List<Venta> listaVentas) {
-        this.listaVentas = listaVentas;
-    }
 }
