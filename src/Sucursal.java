@@ -58,9 +58,29 @@ public class Sucursal {
     public List<Venta> getListaVentas() { return listaVentas; }
     public void setListaVentas(List<Venta> listaVentas) { this.listaVentas = listaVentas; }
 
-    public boolean siExistePrendaEnSucursal(String codigoPrendaBuscada) {
+    //Metodo  para verificar si existe prenda
+    public boolean existePrendaEnSucursal(String codigoPrendaBuscada) {
         for (Inventario inventarioActual : listaInventarios) {
             if (inventarioActual.getPrenda().getCodigoUnicoPrenda().equalsIgnoreCase(codigoPrendaBuscada)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Prenda buscarPrendaPorCodigo(String codigoBuscado) {
+        for (Prenda prenda : listaPrendas) {
+            if (prenda.getCodigoUnicoPrenda().equalsIgnoreCase(codigoBuscado)) {
+                return prenda;
+            }
+        }
+        return null;
+    }
+
+    //Metodo para verificar si existe vendedor
+    public boolean existeVendedor(String documentoBuscado) {
+        for (Vendedor vendedor : listaVendedores) {
+            if (vendedor.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
                 return true;
             }
         }
