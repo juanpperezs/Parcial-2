@@ -24,6 +24,7 @@ public class Cliente extends Persona{
         }
     }
 
+
     public String getCodigoAfiliacion() {
         return codigoAfiliacion;
     }

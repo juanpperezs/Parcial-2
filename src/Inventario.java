@@ -25,6 +25,7 @@ public class Inventario {
         }
     }
 
+
     public Sucursal getSucursal() {
         return sucursal;
     }

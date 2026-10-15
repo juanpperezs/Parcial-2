@@ -19,6 +19,7 @@ public class Empresa {
         }
     }
 
+
     public String getNombreComercial() {
         return nombreComercial;
     }
