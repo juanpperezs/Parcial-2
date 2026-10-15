@@ -42,7 +42,19 @@ public class Aplicacion {
                     break;
 
                 case 2:
+                    System.out.print("Ingrese el documento de identidad: ");
+                    String documento = scanner.nextLine();
 
+                    if (Cliente.existeCliente(documento)) {
+                        System.out.println("-> Error: Ya existe un cliente registrado con la cédula " + documento);
+                    } else {
+                        System.out.print("Ingrese el nombre completo del cliente: ");
+                        String nombre = scanner.nextLine();
+
+                        Cliente.registrarCliente(new Cliente(documento, nombre));
+                        System.out.println("-> Cliente registrado exitosamente.");
+                    }
+                    break;
                     break;
 
                 case 3:

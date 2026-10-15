@@ -77,4 +77,7 @@ public class Cliente extends Persona{
         }
         return false;
     }
+
+    //Metodo para registrar un cliente
+    public boolean
 }
