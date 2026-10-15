@@ -106,6 +106,7 @@ public class Aplicacion {
                     break;
 
                 case 9:
+                    System.out.println("\n--- CONSULTAR VENTAS POR VENDEDOR ---");
 
                     break;
 
