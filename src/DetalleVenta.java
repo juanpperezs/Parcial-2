@@ -1,4 +1,5 @@
 public class DetalleVenta {
+
     private int cantidadComprada;
     private int precioUnitarioFinal;
     private int subtotal;
@@ -53,3 +54,9 @@ public class DetalleVenta {
         this.venta = venta;
     }
 }
+
+    //Metodo para calcular precio unitario
+    public double calcularValorUnitario(Prenda prenda) {
+        double precioBase = this.Prenda.getPrecioBasePrenda();
+    }
+  }
