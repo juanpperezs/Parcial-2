@@ -11,7 +11,7 @@ public class Aplicacion {
         do{
             System.out.println("\n---Menú online MODASTYLE---");
 
-            System.out.println("1. Registrar prendas de vestir en el catálogo de la empresa, evitando códigos duplicados.");
+            System.out.println("1. Registrar prendas de vestir en el catálogo de la empresa, evitando códigos duplicados.\n");
             System.out.println("2. Registrar clientes y vendedores, evitando documentos de identidad duplicados.\n");
             System.out.println("3. Registrar existencias de prendas en una sucursal, considerando su referencia, talla y color, y evitando registros de inventario duplicados para una misma combinación.\n");
             System.out.println("4. Consultar las prendas disponibles en una sucursal determinada, indicando sus tallas, colores y cantidades disponibles.\n");
@@ -20,8 +20,8 @@ public class Aplicacion {
             System.out.println("7. Calcular el valor total de una venta a partir de las cantidades compradas y los precios unitarios finales de las prendas adquiridas.\n");
             System.out.println("8. Consultar las prendas agotadas.\n");
             System.out.println("9. Consultar las ventas realizadas por un vendedor.\n");
-            System.out.println("10. Consultar las compras realizadas por un cliente.");
-            System.out.println("11. Calcular los ingresos totales generados por una sucursal.");
+            System.out.println("10. Consultar las compras realizadas por un cliente.\n");
+            System.out.println("11. Calcular los ingresos totales generados por una sucursal.\n");
             System.out.println("12. Identificar la referencia de prenda con mayor cantidad de unidades vendidas en toda la empresa.\n");
 
             System.out.println("0. Salir del menú");
