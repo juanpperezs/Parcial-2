@@ -69,9 +69,9 @@ public class Cliente extends Persona{
     }
 
     //Metodo para verificar sin un cliente existe
-    public boolean siExisteCliente(String documentoBuscado) {
+    public boolean existeCliente(String documentoBuscado) {
         for (Cliente clienteActual : listaClientes) {
-            if (clienteActual.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado.trim())) {
+            if (clienteActual.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
                 return true;
             }
         }

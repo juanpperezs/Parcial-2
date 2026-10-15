@@ -85,6 +85,16 @@ public class Vendedor extends Persona {
         return agregado;
     }
 
+    //Metodo para verificar si existe vendedor
+    public boolean existeVendedor(String documentoBuscado) {
+        for (Vendedor vendedorActual : listaVendedores) {
+            if (vendedorActual.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Vendedor{" +
