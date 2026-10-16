@@ -322,6 +322,17 @@ public class Aplicacion {
                     System.out.print("Ingrese el código único de la venta a consultar: ");
                     String codigoVentaTotalBuscado = scanner.next();
                     Venta ventaParaTotal = null;
+                    for (Sucursal sucursal : empresa.getListaSucursales()) {
+                        for (Venta v : sucursal.getListaVentas()) {
+                            if (v.getCodigoUnicoVenta().equalsIgnoreCase(codigoVentaTotalBuscado)) {
+                                ventaParaTotal = v;
+                                break;
+                            }
+                        }
+                        if (ventaParaTotal != null) {
+                            break;
+                        }
+                    }
                     if (ventaParaTotal != null) {
                         double valorTotalVenta = 0;
                         if (ventaParaTotal.getListaDetalleVentas() != null) {
