@@ -498,6 +498,7 @@ public class Aplicacion {
                         }
                     break;
             }
+
         } while (opcion != 0);
 
         scanner.close();
