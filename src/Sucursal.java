@@ -70,14 +70,6 @@ public class Sucursal {
         return existe;
     }
 
-    public boolean existeVendedor(String documentoBuscado) {
-        for (Vendedor vendedorActual : listaVendedores) {
-            if (vendedorActual.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
-                return true;
-            }
-        }
-        return false;
-    }
     //Metodo para agregar vendedor
     public boolean agregarVendedor(Vendedor vendedor) {
         boolean agregado = false;
@@ -97,6 +89,7 @@ public class Sucursal {
                     && inv.getTalla().toString().equalsIgnoreCase(talla)
                     && inv.getColorInventario().equalsIgnoreCase(color)) {
                 existe = true;
+                break;
             }
         }
         return existe;
@@ -109,6 +102,7 @@ public class Sucursal {
                     && inv.getTalla().toString().equalsIgnoreCase(talla)
                     && inv.getColorInventario().equalsIgnoreCase(color)) {
                 inventarioEncontrado = inv;
+                break;
             }
         }
         return inventarioEncontrado;

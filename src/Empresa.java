@@ -132,6 +132,7 @@ public class Empresa {
             if (sucursal.getCodigoUnico().equalsIgnoreCase(codigoBuscado)) {
                 existe = true;
                 sucursalEncontrada = sucursal;
+                break;
             }
         }
 
