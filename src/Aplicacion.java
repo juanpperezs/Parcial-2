@@ -493,12 +493,12 @@ public class Aplicacion {
                 case 11:
                     System.out.println("--- 11. CALCULAR INGRESOS TOTALES POR SUCURSAL ---\n");
                     System.out.print("Ingrese el código de la sucursal: ");
-                    String codigoSucursalIngresadocase11 = scanner.nextLine();
+                    String codigoSucursalIngresadoCaso11 = scanner.nextLine();
 
-                    Sucursal sucursalEncontradoCasoOnce = null;
+                    Sucursal sucursalEncontradoCasoOnce = empresa.buscarSucursalPorCodigo(codigoSucursalIngresadoCaso11);
 
-                    if (sucursalEncontradoCasoOnce != null) {
-                        System.out.println("No existe ningúna sucursal con el código: " + codigoSucursalIngresadocase11 + "\n");
+                    if (sucursalEncontradoCasoOnce == null) {
+                        System.out.println("No existe ningúna sucursal con el código: " + codigoSucursalIngresadoCaso11 + "\n");
                         System.out.println("Códigos disponibles: S01, S02, S03.\n");
                         break;
                     } else {
