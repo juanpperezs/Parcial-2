@@ -68,6 +68,12 @@ public class Empresa {
         this.listaClientes = listaClientes;
     }
 
+    public List<Prenda> getListaPrendas() {
+        return listaPrendas;
+    }
+    public void setListaPrendas(List<Prenda> listaPrendas) {
+        this.listaPrendas = listaPrendas;
+    }
     //metodo para verificar sucursales
     public boolean verificarSucursal(String codigoUnicoSucursal) {
         boolean existe = false;
