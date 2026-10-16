@@ -107,7 +107,7 @@ public class Aplicacion {
             opcion = scanner.nextInt();
             scanner.nextLine();
 
-            switch (opcion){
+            switch (opcion) {
                 case 1:
                     /*System.out.print("---REGISTRAR PRENDAS---"+ "\n");
 
@@ -197,10 +197,35 @@ public class Aplicacion {
                     }*/
                     break;
 
-                case 4:
+                case 4: {
 
+                    System.out.print("Ingrese el código único de la sucursal: ");
+                    String codSucursal4 = scanner.nextLine();
+
+                    Sucursal sucursalActual = empresa.buscarSucursalPorCodigo(codSucursal4);
+
+                    if (sucursalActual == null) {
+                        System.out.println("-> Error: La sucursal con el código " + codSucursal4 + " no existe.");
+                    } else {
+
+                        System.out.println("\n--- CONSULTA PRENDAS DISPONIBLES EN: " + sucursalActual.getNombre() + " ---");
+
+                        if (sucursalActual.getListaInventarios().isEmpty()) {
+                            System.out.println("-> No hay registro de inventario en esta sucursal.");
+                        } else {
+                            for (Inventario inv : sucursalActual.getListaInventarios()) {
+                                if (inv.getCantidadDisponibleInventario() > 0) {
+                                    System.out.println("Prenda: " + inv.getPrenda().getNombrePrenda() +
+                                            " | Talla: " + inv.getTalla() +
+                                            " | Color: " + inv.getColorInventario() +
+                                            " | Unidades: " + inv.getCantidadDisponibleInventario());
+                                }
+                            }
+                        }
+                    }
                     break;
 
+                }
                 case 5:
                     System.out.println("--- REGISTRAR VENTA ---");
                     System.out.print("Cree el código único de la venta: ");
