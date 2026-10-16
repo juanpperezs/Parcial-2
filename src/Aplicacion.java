@@ -150,8 +150,7 @@ public class Aplicacion {
                 case 2:
                     System.out.print("Ingrese el documento de identidad: ");
                     String documento = scanner.nextLine();
-
-                    /*if (Cliente.existeCliente(documento)) {
+                    if (Cliente.existeCliente(documento)) {
                         System.out.println("-> Error: Ya existe un cliente registrado con la cédula " + documento);
                     } else {
                         System.out.print("Ingrese el nombre completo del cliente: ");
@@ -159,9 +158,8 @@ public class Aplicacion {
 
                         Cliente.registrarCliente(new Cliente(documento, nombre));
                         System.out.println("-> Cliente registrado exitosamente.");
-                    }*/
+                    }
                     break;
-
                 case 3:
                     System.out.print("---REGISTRAR EXISTENCIAS DE PRENDAS---"+"\n");
 
@@ -285,13 +283,17 @@ public class Aplicacion {
                 case 8:
                     System.out.println("--- REPORTE DE INVENTARIO AGOTADO ---");
                     boolean hayAgotados = false;
-                    for (Sucursal sucursalActual : empresa.getListaSucursales()) {
-                        for (Inventario inv : sucursalActual.getListaInventarios()) {
-                            if (inv.getCantidadDisponibleInventario() == 0) {
-                                System.out.println("Sucursal: " + sucursalActual.getCiudad() +
-                                        " | Prenda: " + inv.getPrenda().getNombrePrenda() +
-                                        " | Color: " + inv.getColorInventario());
-                                hayAgotados = true;
+                    if (empresa != null && empresa.getListaSucursales() != null) {
+                        for (Sucursal sucursalItem : empresa.getListaSucursales()) {
+                            if (sucursalItem.getListaInventarios() != null) {
+                                for (Inventario inv : sucursalItem.getListaInventarios()) {
+                                    if (inv.getCantidadDisponibleInventario() == 0) {
+                                        System.out.println("Sucursal: " + sucursalItem.getCiudad() +
+                                                " | Prenda: " + inv.getPrenda().getNombrePrenda() +
+                                                " | Color: " + inv.getColorInventario());
+                                        hayAgotados = true;
+                                    }
+                                }
                             }
                         }
                     }

@@ -59,29 +59,6 @@ public class Sucursal {
     public void setListaVentas(List<Venta> listaVentas) { this.listaVentas = listaVentas; }
 
 
-    //Metodo  para verificar si existe prenda
-    public boolean verificarPrenda(String codigoBuscado) {
-    boolean existe = false;
-        for (Prenda prendaActual : listaPrendas) {
-            if (prendaActual.getCodigoUnicoPrenda().equalsIgnoreCase(codigoBuscado)) {
-                existe = true;
-            }
-        }
-        return existe;
-    }
-
-
-    //Metodo para agregar prenda
-    public boolean agregarPrenda(Prenda prenda) {
-    boolean agregado = false;
-    boolean existe = verificarPrenda(prenda.getCodigoUnicoPrenda());
-        if (!existe) {
-            listaPrendas.add(prenda);
-            agregado = true;
-        }
-        return agregado;
-    }
-
     //Metodo para verificar si existe vendedor
     public boolean verificarVendedor(String documentoBuscado) {
         boolean existe = false;
@@ -93,28 +70,14 @@ public class Sucursal {
         return existe;
     }
 
-    //Metodo para verificar si existe cliente
-    public boolean verificarCliente(String documentoBuscado) {
-        boolean existe = false;
-        for (Cliente clienteActual : listaClientes) {
-            if (clienteActual.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
-                existe = true;
+    public boolean existeVendedor(String documentoBuscado) {
+        for (Vendedor vendedorActual : listaVendedores) {
+            if (vendedorActual.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
+                return true;
             }
         }
-        return existe;
+        return false;
     }
-
-    //Metodo para agregar cliente
-    public boolean agregarCliente(Cliente cliente) {
-    boolean agregado = false;
-    boolean existe = verificarCliente(cliente.getDocumentoIdentidad());
-        if (!existe) {
-        listaClientes.add(cliente);
-        agregado = true;
-    }
-    return agregado;
-}
-
     //Metodo para agregar vendedor
     public boolean agregarVendedor(Vendedor vendedor) {
         boolean agregado = false;
@@ -126,52 +89,28 @@ public class Sucursal {
         return agregado;
     }
 
-    //Metodo para verificar si existe codigo de prenda
-    public boolean verificarCodigoPrenda(String codigoBuscado) {
-    boolean existe = false;
-    for (Prenda prendaActual : listaPrendas) {
-        if (prendaActual.getCodigoUnicoPrenda().equalsIgnoreCase(codigoBuscado)) {
-            existe = true;
-        }
-    }
-    return existe;
-}
-
-    //Metodo para buscar prenda con código
-    public Prenda buscarPrendaPorCodigo(String codigoBuscado) {
-        Prenda prendaEncontrada = null;
-        for (Prenda prendaActual : listaPrendas) {
-            if (prendaActual.getCodigoUnicoPrenda().equalsIgnoreCase(codigoBuscado)) {
-                prendaEncontrada = prendaActual;
-            }
-        }
-        return prendaEncontrada;
-    }
-
     //Metodo para verificar si la combinacio existe
     public boolean verificarInventarioCombinacion(String codigo, String talla, String color) {
         boolean existe = false;
         for (Inventario inv : listaInventarios) {
-            if (inv.getPrenda().getCodigoUnicoPrenda().equalsIgnoreCase(codigo) && inv.getTalla().equalsIgnoreCase(talla) && inv.getColorInventario().equalsIgnoreCase(color)) {
+            if (inv.getPrenda().getCodigoUnicoPrenda().equalsIgnoreCase(codigo)
+                    && inv.getTalla().toString().equalsIgnoreCase(talla)
+                    && inv.getColorInventario().equalsIgnoreCase(color)) {
                 existe = true;
             }
         }
         return existe;
     }
-
     //Metodo para buscar la combinacion en inventario
     public Inventario buscarInventarioPorCombinacion(String codigo, String talla, String color) {
         Inventario inventarioEncontrado = null;
         for (Inventario inv : listaInventarios) {
-            if (inv.getPrenda().getCodigoUnicoPrenda().equalsIgnoreCase(codigo) && inv.getTalla().equalsIgnoreCase(talla) && inv.getColorInventario().equalsIgnoreCase(color)) {
+            if (inv.getPrenda().getCodigoUnicoPrenda().equalsIgnoreCase(codigo)
+                    && inv.getTalla().toString().equalsIgnoreCase(talla)
+                    && inv.getColorInventario().equalsIgnoreCase(color)) {
                 inventarioEncontrado = inv;
             }
         }
         return inventarioEncontrado;
     }
-    //Metodo
-
-
-
-
 }

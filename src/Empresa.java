@@ -7,11 +7,13 @@ public class Empresa {
     private String direccionPrincipal;
     private List<Sucursal> listaSucursales;
     private List<Cliente> listaClientes;
+    private List<Prenda> listaPrendas;
 
     public Empresa(String nombreComercial, String nit, String direccionPrincipal, List<Sucursal> listaSucursales, List<Cliente> listaClientes) {
         this.nombreComercial = nombreComercial;
         this.nit = nit;
         this.direccionPrincipal = direccionPrincipal;
+        this.listaPrendas = new ArrayList<>();
 
         //Condición que identifica si existe lista de ventas, si no la existe, la crea
         if (listaSucursales != null){
@@ -134,5 +136,21 @@ public class Empresa {
         }
 
         return sucursalEncontrada;
+    }
+    public boolean verificarPrenda(String codigoBuscado) {
+        for (Prenda prendaActual : listaPrendas) {
+            if (prendaActual.getCodigoUnicoPrenda().equalsIgnoreCase(codigoBuscado)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean agregarPrenda(Prenda prendaNueva) {
+        boolean existe = verificarPrenda(prendaNueva.getCodigoUnicoPrenda());
+        if (!existe) {
+            listaPrendas.add(prendaNueva);
+            return true;
+        }
+        return false;
     }
 }
