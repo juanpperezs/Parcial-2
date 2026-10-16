@@ -65,6 +65,7 @@ public class Sucursal {
         for (Vendedor vendedorActual : listaVendedores) {
             if (vendedorActual.getDocumentoIdentidad().equalsIgnoreCase(documentoBuscado)) {
                 existe = true;
+                break;
             }
         }
         return existe;

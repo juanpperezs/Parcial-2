@@ -86,12 +86,18 @@ public class Vendedor extends Persona {
     }
     @Override
     public String toString() {
+        String nombreSucursal;
+        if (sucursal == null) {
+            nombreSucursal = "sin sucursal";
+        } else {
+            nombreSucursal = sucursal.getNombre();
+        }
+
         return "Vendedor{" +
                 "codigoVendedor='" + codigoVendedor + '\'' +
-                ", fechaContratacionVendedor='" + fechaContratacionVendedor + '\'' +
-                ", salarioBasicoVendedor=" + salarioBasicoVendedor +
-                ", sucursal=" + sucursal +
-                ", historialVentas=" + historialVentas +
+                ", nombre='" + getNombreCompleto() + '\'' +
+                ", sucursal='" + nombreSucursal + '\'' +
+                ", ventas=" + historialVentas.size() +
                 '}';
     }
 }
