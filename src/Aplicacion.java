@@ -23,6 +23,11 @@ public class Aplicacion {
         Prenda vestido = new Prenda("P3", "Vestido de grado", "La lapita", 320000, CategoriaPrenda.VESTIDO);
         Prenda chaqueta = new Prenda("P4", "Chaqueta impermeable", "Decathlon", 350000, CategoriaPrenda.CHAQUETA);
         Prenda calzado = new Prenda("P5", "Guayos Mercurial Vapor 16", "Nike", 260000, CategoriaPrenda.CALZADO);
+        empresa.getListaPrendas().add(camisa);
+        empresa.getListaPrendas().add(pantalon);
+        empresa.getListaPrendas().add(vestido);
+        empresa.getListaPrendas().add(chaqueta);
+        empresa.getListaPrendas().add(calzado);
 
         //Inventario sucursal Armenia
         Inventario inventarioArmenia1 = new Inventario(sucursalArmenia, camisa, Talla.M, "Blanco", 99, null);
@@ -320,7 +325,9 @@ public class Aplicacion {
                         System.out.print("Ingrese la cantidad deseada: ");
                         int cantidadDeseada = scanner.nextInt();
                         if (inventarioSeleccionado != null && inventarioSeleccionado.verificarDisponibilidad(cantidadDeseada)) {
-                            DetalleVenta detalle = new DetalleVenta(cantidadDeseada, 0, 0, inventarioSeleccionado, nuevaVenta);
+                            int precioPrenda = (int) inventarioSeleccionado.getPrenda().getPrecioBasePrenda();
+                            int subtotal = cantidadDeseada * precioPrenda;
+                            DetalleVenta detalle = new DetalleVenta(cantidadDeseada, precioPrenda, subtotal, inventarioSeleccionado, nuevaVenta);
                             detallesTemporal.add(detalle);
                             nuevaVenta.agregarDetalle(detalle);
                             System.out.println("¡Prenda agregada a la venta con éxito!\n");
@@ -338,6 +345,8 @@ public class Aplicacion {
                         }
                         nuevaVenta.confirmarVenta();
                         sucursalEncontradaRegistro.getListaVentas().add(nuevaVenta);
+                        vendedorEncontrado.getHistorialVentas().add(nuevaVenta);
+                        clienteEncontrado.getListaVentas().add(nuevaVenta);
                         System.out.println("¡Venta registrada y stock descontado con éxito!\n");
                     } else {
                         System.out.println("La venta fue cancelada o no pudo ser procesada.\n");
