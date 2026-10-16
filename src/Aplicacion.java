@@ -114,7 +114,8 @@ public class Aplicacion {
                     String codigoSucursalIngresado = scanner.nextLine();
                     Sucursal sucursalEncontrada = empresa.buscarSucursalPorCodigo(codigoSucursalIngresado);
                     if (sucursalEncontrada == null) {
-                        System.out.println("---Error: La sucursal con el código " + codigoSucursalIngresado + " no existe.");
+                        System.out.println("---Error: La sucursal con el código " + codigoSucursalIngresado + " no existe.\n");
+                        break;
                     } else {
                         System.out.print("Ingrese el código único de la prenda: ");
                         String codigoPrendaIngresado = scanner.nextLine();
@@ -126,7 +127,8 @@ public class Aplicacion {
                             }
                         }
                         if (laPrendaYaExiste) {
-                            System.out.println("---Error: La prenda ya existe en el sistema.");
+                            System.out.println("---Error: La prenda ya existe en el sistema.\n");
+                            break;
                         } else {
                             System.out.print("Ingrese el nombre de la prenda: ");
                             String nombrePrendaIngresado = scanner.nextLine();
@@ -137,7 +139,7 @@ public class Aplicacion {
                             scanner.nextLine();
                             Prenda nuevaPrendaCreada = new Prenda(codigoPrendaIngresado, nombrePrendaIngresado, marcaPrendaIngresado, precioBaseIngresado, null);
                             empresa.getListaPrendas().add(nuevaPrendaCreada);
-                            System.out.println("-> Prenda agregada exitosamente a la empresa.");
+                            System.out.println("-> Prenda agregada exitosamente a la empresa.\n");
                         }
                     }
                     break;
@@ -153,7 +155,8 @@ public class Aplicacion {
                         }
                     }
                     if (elClienteYaExiste) {
-                        System.out.println("---Error: Ya existe un cliente registrado con la cédula " + documentoIdentidadIngresado + ".");
+                        System.out.println("---Error: Ya existe un cliente registrado con la cédula " + documentoIdentidadIngresado + ".\n");
+                        break;
                     } else {
                         System.out.print("Ingrese el nombre completo del cliente: ");
                         String nombreCompletoIngresado = scanner.nextLine();
@@ -173,7 +176,7 @@ public class Aplicacion {
                                 null
                         );
                         empresa.getListaClientes().add(nuevoClienteCreado);
-                        System.out.println("-> Cliente registrado exitosamente en el sistema.");
+                        System.out.println("-> Cliente registrado exitosamente en el sistema.\n");
                     }
                     break;
                 case 3:
@@ -182,7 +185,8 @@ public class Aplicacion {
                     codigoSucursalIngresado = scanner.nextLine();
                     sucursalEncontrada = empresa.buscarSucursalPorCodigo(codigoSucursalIngresado);
                     if (sucursalEncontrada == null) {
-                        System.out.println("---Error: La sucursal con el código " + codigoSucursalIngresado + " no existe.");
+                        System.out.println("---Error: La sucursal con el código " + codigoSucursalIngresado + " no existe.\n");
+                        break;
                     } else {
                         System.out.print("Ingrese el código único de la prenda: ");
                         String codigoPrendaIngresado = scanner.nextLine();
@@ -194,7 +198,8 @@ public class Aplicacion {
                             }
                         }
                         if (prendaEncontrada == null) {
-                            System.out.println("-> Error: El código no existe en el catálogo. Regístrala en la Opción 1.");
+                            System.out.println("-> Error: El código no existe en el catálogo. Regístrala en la Opción 1.\n");
+                            break;
                         } else {
                             System.out.print("Ingrese la talla (ej: S, M, L): ");
                             String textoTallaIngresada = scanner.nextLine();
@@ -207,7 +212,8 @@ public class Aplicacion {
                             if (existeCombinacionInventario) {
                                 Inventario inventarioExistente = sucursalEncontrada.buscarInventarioPorCombinacion(codigoPrendaIngresado, textoTallaIngresada, colorIngresado);
                                 inventarioExistente.setCantidadDisponibleInventario(inventarioExistente.getCantidadDisponibleInventario() + cantidadIngresada);
-                                System.out.println("--- Se sumaron las unidades al inventario existente. ---");
+                                System.out.println("--- Se sumaron las unidades al inventario existente. ---\n");
+                                break;
                             } else {
                                 Talla tallaSeleccionada = Talla.valueOf(textoTallaIngresada.toUpperCase());
                                 Inventario nuevoInventarioCreado = new Inventario(
@@ -219,7 +225,7 @@ public class Aplicacion {
                                         null
                                 );
                                 sucursalEncontrada.getListaInventarios().add(nuevoInventarioCreado);
-                                System.out.println("--- Nueva combinación registrada con éxito. ---");
+                                System.out.println("--- Nueva combinación registrada con éxito. ---\n");
                             }
                         }
                     }
@@ -229,18 +235,20 @@ public class Aplicacion {
                     String codSucursal4 = scanner.nextLine();
                     Sucursal sucursalActual = empresa.buscarSucursalPorCodigo(codSucursal4);
                     if (sucursalActual == null) {
-                        System.out.println("-> Error: La sucursal con el código " + codSucursal4 + " no existe.");
+                        System.out.println("-> Error: La sucursal con el código " + codSucursal4 + " no existe.\n");
+                        break;
                     } else {
-                        System.out.println("\n--- CONSULTA PRENDAS DISPONIBLES EN: " + sucursalActual.getNombre() + " ---");
+                        System.out.println("\n--- CONSULTA PRENDAS DISPONIBLES EN: " + sucursalActual.getNombre() + " ---\n");
                         if (sucursalActual.getListaInventarios().isEmpty()) {
-                            System.out.println("-> No hay registro de inventario en esta sucursal.");
+                            System.out.println("-> No hay registro de inventario en esta sucursal.\n");
+                            break;
                         } else {
                             for (Inventario inv : sucursalActual.getListaInventarios()) {
                                 if (inv.getCantidadDisponibleInventario() > 0) {
                                     System.out.println("Prenda: " + inv.getPrenda().getNombrePrenda() +
                                             " | Talla: " + inv.getTalla() +
                                             " | Color: " + inv.getColorInventario() +
-                                            " | Unidades: " + inv.getCantidadDisponibleInventario());
+                                            " | Unidades: " + inv.getCantidadDisponibleInventario()+"\n");
                                 }
                             }
                         }
