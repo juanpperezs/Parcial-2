@@ -109,7 +109,7 @@ public class Aplicacion {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("--- REGISTRAR PRENDAS ---");
+                    System.out.println("--- 1. REGISTRAR PRENDAS ---");
                     System.out.print("Ingrese el código de la sucursal: ");
                     String codigoSucursalIngresado = scanner.nextLine();
                     Sucursal sucursalEncontrada = empresa.buscarSucursalPorCodigo(codigoSucursalIngresado);
@@ -144,7 +144,7 @@ public class Aplicacion {
                     }
                     break;
                 case 2:
-                    System.out.println("--- REGISTRAR CLIENTES ---");
+                    System.out.println("--- 2. REGISTRAR CLIENTES ---");
                     System.out.print("Ingrese el documento de identidad del cliente: ");
                     String documentoIdentidadIngresado = scanner.nextLine();
                     boolean elClienteYaExiste = false;
@@ -180,7 +180,7 @@ public class Aplicacion {
                     }
                     break;
                 case 3:
-                    System.out.println("--- REGISTRAR EXISTENCIAS DE PRENDAS ---");
+                    System.out.println("--- 3. REGISTRAR EXISTENCIAS DE PRENDAS ---");
                     System.out.print("Ingrese el código de la sucursal: ");
                     codigoSucursalIngresado = scanner.nextLine();
                     sucursalEncontrada = empresa.buscarSucursalPorCodigo(codigoSucursalIngresado);
@@ -231,6 +231,7 @@ public class Aplicacion {
                     }
                     break;
                 case 4:
+                    System.out.println("--- 4. CONSULTAR PRENDAS DISPONIBLES EN UNA SUCURSAL ---");
                     System.out.print("Ingrese el código único de la sucursal: ");
                     String codSucursal4 = scanner.nextLine();
                     Sucursal sucursalActual = empresa.buscarSucursalPorCodigo(codSucursal4);
